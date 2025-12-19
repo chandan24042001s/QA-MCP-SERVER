@@ -141,20 +141,20 @@ const AISection = ({ onResults, onError, onLoading, loading }) => {
         <h3 className="text-xl font-bold text-black">
           AI Operations
         </h3>
-        {operations.map((op) => (
-          <div
-            key={op.name}
-            className={`bg-gradient-to-br ${op.bgGradient} border-2 border-transparent hover:border-pink-300 rounded-xl p-5 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl group`}
-          >
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {operations.map((op) => (
+            <div
+              key={op.name}
+              className={`bg-gradient-to-br ${op.bgGradient} border-2 border-transparent hover:border-pink-300 rounded-xl p-5 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl group flex flex-col`}
+            >
+              <div className="flex-1 mb-4">
                 <h4 className="font-bold text-black text-lg mb-2">{op.name}</h4>
-                <p className="text-sm text-black/80 mb-3">{op.description}</p>
+                <p className="text-sm text-black/80">{op.description}</p>
               </div>
               <button
                 onClick={() => handleSubmit(op.method, op.name)}
                 disabled={loadingOperation !== null}
-                className={`relative px-6 py-3 bg-gradient-to-r ${op.gradient} text-white rounded-xl hover:shadow-lg disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 font-semibold shadow-md overflow-hidden ${
+                className={`relative w-full px-6 py-3 bg-gradient-to-r ${op.gradient} text-white rounded-xl hover:shadow-lg disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105 font-semibold shadow-md overflow-hidden ${
                   loadingOperation === op.name ? 'pointer-events-none' : ''
                 } ${loadingOperation !== null && loadingOperation !== op.name ? 'opacity-50' : ''}`}
               >
@@ -173,8 +173,8 @@ const AISection = ({ onResults, onError, onLoading, loading }) => {
                 )}
               </button>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

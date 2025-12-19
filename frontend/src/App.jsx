@@ -1,24 +1,31 @@
 import { useState } from 'react';
 import Dashboard from './components/Dashboard';
-import ResultsPanel from './components/ResultsPanel';
+import ResultsModal from './components/ResultsModal';
 
 function App() {
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleResults = (data) => {
     setResults(data);
     setError(null);
+    setIsModalOpen(true);
   };
 
   const handleError = (err) => {
     setError(err);
     setResults(null);
+    setIsModalOpen(true);
   };
 
   const handleLoading = (isLoading) => {
     setLoading(isLoading);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -56,24 +63,24 @@ function App() {
 
         {/* Main Content */}
         <main className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="lg:col-span-1">
-              <Dashboard
-                onResults={handleResults}
-                onError={handleError}
-                onLoading={handleLoading}
-                loading={loading}
-              />
-            </div>
-            <div className="lg:col-span-1">
-              <ResultsPanel
-                results={results}
-                error={error}
-                loading={loading}
-              />
-            </div>
+          <div className="w-full">
+            <Dashboard
+              onResults={handleResults}
+              onError={handleError}
+              onLoading={handleLoading}
+              loading={loading}
+            />
           </div>
         </main>
+
+        {/* Results Modal */}
+        <ResultsModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          results={results}
+          error={error}
+          loading={loading}
+        />
       </div>
     </div>
   );

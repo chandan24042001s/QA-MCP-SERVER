@@ -1,8 +1,8 @@
 com/mcp/qa/ai/AIRequestBuilder.class
 com/mcp/qa/config/GlobalExceptionHandler.class
 com/mcp/qa/analyzer/StaticAnalyzer.class
-com/mcp/qa/ai/AIResponseParser.class
 com/mcp/qa/config/CorsConfig.class
+com/mcp/qa/ai/AIResponseParser.class
 com/mcp/qa/service/ScanService.class
 com/mcp/qa/techdebt/TechDebtCalculator.class
 com/mcp/qa/service/TestExecutionService.class
