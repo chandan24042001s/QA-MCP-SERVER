@@ -1,0 +1,10 @@
+{
+  "name": "ai.refactor_advisor",
+  "args": { 
+    "repoUrl": "string",
+    "branch": "string",
+    "path": "string"
+  }
+}
+
+

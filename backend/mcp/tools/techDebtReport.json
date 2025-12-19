@@ -1,0 +1,4 @@
+{
+  "name": "tech_debt_report",
+  "args": { "path": "string" }
+}

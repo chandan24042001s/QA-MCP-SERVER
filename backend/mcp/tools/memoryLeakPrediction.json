@@ -1,0 +1,10 @@
+{
+  "name": "ai.memory_leak_prediction",
+  "args": { 
+    "repoUrl": "string",
+    "branch": "string",
+    "path": "string"
+  }
+}
+
+

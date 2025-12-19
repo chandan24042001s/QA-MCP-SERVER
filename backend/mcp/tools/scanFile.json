@@ -1,0 +1,4 @@
+{
+  "name": "scan_files",
+  "args": { "path": "string" }
+}

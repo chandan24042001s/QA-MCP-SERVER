@@ -1,0 +1,4 @@
+{
+  "name": "scan_repository",
+  "args": { "repoUrl": "string", "branch": "string" }
+}

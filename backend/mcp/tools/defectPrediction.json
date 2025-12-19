@@ -1,0 +1,10 @@
+{
+  "name": "ai.defect_prediction",
+  "args": { 
+    "repoUrl": "string",
+    "branch": "string",
+    "path": "string"
+  }
+}
+
+

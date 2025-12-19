@@ -1,0 +1,10 @@
+{
+  "name": "ai.code_insights",
+  "args": { 
+    "repoUrl": "string",
+    "branch": "string",
+    "path": "string"
+  }
+}
+
+
