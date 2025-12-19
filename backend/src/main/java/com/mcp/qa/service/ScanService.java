@@ -22,9 +22,14 @@ public class ScanService {
     }
 
     public Map<String,Object> scanRepository(String reqId, String repoUrl, String branch) {
+        Path localPath = null;
         try {
-            Path localPath = Files.createTempDirectory("repo-");
-            GitUtils.cloneRepo(repoUrl, localPath);
+            localPath = Files.createTempDirectory("repo-");
+            if (branch != null && !branch.isEmpty()) {
+                GitUtils.cloneRepo(repoUrl, localPath, branch);
+            } else {
+                GitUtils.cloneRepo(repoUrl, localPath);
+            }
 
             long filesScanned = countFilesScanned(localPath);
             
@@ -46,7 +51,19 @@ public class ScanService {
             );
 
         } catch(Exception e) {
-            return Map.of("status", "error", "error", e.getMessage());
+            e.printStackTrace();
+            if (localPath != null) {
+                try {
+                    Files.walk(localPath)
+                        .sorted((a, b) -> -a.compareTo(b))
+                        .forEach(p -> {
+                            try {
+                                Files.delete(p);
+                            } catch (Exception ignored) {}
+                        });
+                } catch (Exception ignored) {}
+            }
+            return Map.of("status", "error", "error", e.getMessage() != null ? e.getMessage() : "Unknown error");
         }
     }
     
